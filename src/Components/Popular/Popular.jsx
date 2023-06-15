@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './popular.css'
 import {BsArrowLeftShort} from 'react-icons/bs'
 import {BsArrowRightShort} from 'react-icons/bs'
 import {BsDot} from 'react-icons/bs'
+import Aos from 'aos';
+import'aos/dist/aos.css'
 
 // Import the images============>
 import img1 from '../../Assets/1.jpg'
@@ -47,11 +49,16 @@ const Data = [
 ]
 
 const Popular = () => {
+
+    useEffect(()=>{
+        Aos.init({duration:2000})
+    },[])
+
     return (
         <section className='popular section container'>
             <div className="secContainer">
                 <div className="secHeader flex">
-                    <div className="textDiv">
+                    <div data-aos="fade-right" data-aos-duration="2500" className="textDiv">
                     <h2 className="secTitle">
                         Popular Destination
                     </h2>
@@ -62,7 +69,7 @@ const Popular = () => {
                     </p>
                     </div>
 
-                    <div className="iconsDiv  flex">
+                    <div data-aos="fade-left" data-aos-duration="3000" className="iconsDiv  flex">
                         <BsArrowLeftShort className="icon leftIcon"/>
                         <BsArrowRightShort className="icon"/>
                     </div>
@@ -71,7 +78,7 @@ const Popular = () => {
                 <div className="mainContent grid">
                     {Data.map((data)=>{
                         return(
-                            <div key={data.id} className="singleDestination">
+                            <div key={data.id} data-aos="fade-up" className="singleDestination">
                                 <div className="destImage">
                                     <img src={data.imgSrc} alt='Image title'/>
 

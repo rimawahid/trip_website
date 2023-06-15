@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './offers.css'
 import {MdKingBed} from 'react-icons/md'
 import {MdBathtub} from 'react-icons/md'
@@ -6,6 +6,9 @@ import {FaWifi} from 'react-icons/fa'
 import {MdAirportShuttle} from 'react-icons/md'
 import {MdLocationOn} from 'react-icons/md'
 import {BsArrowRightShort} from 'react-icons/bs'
+
+import Aos from 'aos';
+import'aos/dist/aos.css'
 
 //let us import images ==============>
 import img5 from '../../Assets/5.jpg'
@@ -46,10 +49,15 @@ const Data=[
 ]
 
 const Offers = () => {
+
+    useEffect(()=>{
+        Aos.init({duration:2000})
+    },[])
+
     return (
         <section className='offer container section'>
             <div className="secContainer">
-                <div className="secIntro">
+                <div data-aos="fade-up" data-aos-duration="2000"  className="secIntro">
                     <h2 className="secTitle">
                         Special Offers
                     </h2>
@@ -59,11 +67,11 @@ const Offers = () => {
                     </p>
                 </div>
 
-                <div className="mainContainer grid">
+                <div className="mainContent grid">
                     {
                         Data.map((data)=>{
                             return(
-                                <div key={data.id} className="singleOffer">
+                                <div key={data.id} data-aos="fade-up" data-aos-duration="3000"  className="singleOffer">
                                     <div className="destImage">
                                         <img src={data.imgSrc} alt="Image Name"/>
 
